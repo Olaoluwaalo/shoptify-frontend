@@ -22,7 +22,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
   String? email;
   String? name;
 
@@ -34,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
     name = jwtDecoded["name"];
     getData();
   }
+
 
   void getData() async {
     final homeController = Provider.of<HomeController>(context, listen: false);
@@ -72,7 +72,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Consumer<HomeController>(
             builder: (context, value, child) {
-              return  PopularProductsWidget(email: email!,);
+              return PopularProductsWidget(
+                email: email!,
+              );
             },
           ),
           SizedBox(
@@ -94,7 +96,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         height: 15.h,
                       ),
-                       SubCategoriesWidget(email: email!,),
+                      SubCategoriesWidget(
+                        email: email!,
+                      ),
                     ],
                   ));
             },

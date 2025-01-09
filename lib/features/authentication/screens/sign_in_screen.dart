@@ -121,7 +121,7 @@ _bottomRow(BuildContext context) {
       ),
       GestureDetector(
         onTap: () {
-          context.pop();
+          context.push("/signUpScreen");
         },
         child: boldText(
           text: "Sign Up",

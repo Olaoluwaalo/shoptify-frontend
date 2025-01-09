@@ -1,4 +1,4 @@
-const String baseUrl = "http://192.168.42.150:3000";
+const String baseUrl = "https://shopify-backend-z5pi.onrender.com";
 // user urls
 const String userBaseUrl = "$baseUrl/user";
 const String registerUrl = "$userBaseUrl/register";

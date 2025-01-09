@@ -12,18 +12,23 @@ final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 final GlobalKey<NavigatorState> _shellNavigatorKey =
     GlobalKey<NavigatorState>();
 
-
 class ERoute {
   static final GoRouter goRouter = GoRouter(
-      initialLocation: "/signUpScreen",
+      // initialLocation: "/signUpScreen",
       redirect: (context, state) async {
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         final String? token = prefs.getString("token");
 
         if (token == null || token.isEmpty) {
-          return "/signUpScreen";
+          if (state.matchedLocation == '/signUpScreen' ||
+              state.matchedLocation == '/signIn') {
+            return null;
+          }
+          return "/signIn";
         } else if (JwtDecoder.isExpired(token)) {
-        
+          if (state.matchedLocation == "/signIn") {
+            return null;
+          }
           return "/signIn";
         } else {
           return "/homeScreen/$token";

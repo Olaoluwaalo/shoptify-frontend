@@ -124,7 +124,7 @@ _bottomRow(BuildContext context) {
       ),
       GestureDetector(
         onTap: () {
-          context.push("/signIn");
+          context.pop();
         },
         child: boldText(
           text: "Sign In",
